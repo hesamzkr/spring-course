@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentController {
 
   @GetMapping("/v1/student/name")
-  public String getStudentName(@QueryParam(value = "formal") boolean formal) {
+  public String getStudentName(@RequestParam(value = "formal") boolean formal) {
     if (formal) {
       return "Hesam Zakeri";
     } else {
