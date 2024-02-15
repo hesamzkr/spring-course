@@ -1,8 +1,8 @@
-package com.harbour.demo.courierQuest.controller;
+package com.harbour.courierQuest.controller;
 
-import com.harbour.demo.courierQuest.entity.Quest;
-import com.harbour.demo.courierQuest.entity.QuestDetails;
-import com.harbour.demo.courierQuest.service.QuestService;
+import com.harbour.courierQuest.entity.QuestDetails;
+import com.harbour.courierQuest.entity.Quest;
+import com.harbour.courierQuest.service.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,29 +20,25 @@ public class QuestController {
     private QuestService questService;
 
     @PostMapping("/{questId}/join")
-    public ResponseEntity<String> joinQuest(@PathVariable Long questId) {
-        // Implementation to subscribe a courier to a quest
+    public ResponseEntity<String> joinQuest(@PathVariable String questId) {
         questService.joinQuest(questId);
         return ResponseEntity.ok("Subscribed successfully to quest " + questId);
     }
 
     @GetMapping("/active")
     public ResponseEntity<List<Quest>> getActiveQuests() {
-        // Implementation to retrieve active quests
         List<Quest> activeQuests = questService.getActiveQuests();
         return ResponseEntity.ok(activeQuests);
     }
 
     @GetMapping("/history")
     public ResponseEntity<List<Quest>> getQuestHistory() {
-        // Implementation to retrieve quest history for a courier
         List<Quest> questHistory = questService.getQuestHistory();
         return ResponseEntity.ok(questHistory);
     }
 
     @GetMapping("/{questId}/details")
-    public ResponseEntity<QuestDetails> getQuestDetails(@PathVariable Long questId) {
-        // Implementation to retrieve details of a specific quest
+    public ResponseEntity<QuestDetails> getQuestDetails(@PathVariable String questId) {
         QuestDetails questDetails = questService.getQuestDetails(questId);
         return ResponseEntity.ok(questDetails);
     }

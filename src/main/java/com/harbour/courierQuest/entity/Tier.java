@@ -1,4 +1,4 @@
-package com.harbour.demo.courierQuest.entity;
+package com.harbour.courierQuest.entity;
 
 
 public record Tier(
