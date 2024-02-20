@@ -1,6 +1,7 @@
 package com.harbour.courierQuest.controller;
 
 import com.harbour.courierQuest.service.AuthService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +16,8 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public void login(@RequestBody String username, @RequestBody String password) {
-       authService.login(username, password);
+    public void login(@RequestBody String username, @RequestBody String password, HttpServletResponse response) {
+       authService.login(username, password, response);
     }
 
     @PostMapping("/register")
@@ -28,5 +29,6 @@ public class AuthController {
 
     @PostMapping("/logout")
     public void logout() {
+
     }
 }
